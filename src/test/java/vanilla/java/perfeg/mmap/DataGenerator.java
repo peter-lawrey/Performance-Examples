@@ -29,7 +29,7 @@ public enum DataGenerator {
                 bp -= tickSize;
             }
             if (ap > bp + 10 * tickSize) {
-                if (rand.nextBoolean())
+                if (rand.nextBoolean() || bp < 500)
                     bp += tickSize;
                 else
                     ap -= tickSize;

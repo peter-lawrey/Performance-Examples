@@ -1,0 +1,43 @@
+Using regular Java objects.
+
+OOPS: Took 0.269 seconds to generate and save 1,000,000 entries
+OOPS: Took 0.625 seconds calculate the mid BP, plus a GC and save 1,000,000 entries
+OOPS: Took 0.553 seconds calculate the mid BP, plus a GC and save 1,000,000 entries
+OOPS: Took 0.535 seconds calculate the mid BP, plus a GC and save 1,000,000 entries
+
+OOPS: Took 5.068 seconds to generate and save 10,000,000 entries
+OOPS: Took 5.785 seconds calculate the mid BP, plus a GC and save 10,000,000 entries
+OOPS: Took 4.065 seconds calculate the mid BP, plus a GC and save 10,000,000 entries
+OOPS: Took 4.386 seconds calculate the mid BP, plus a GC and save 10,000,000 entries
+
+OOPS: Took 11.663 seconds to generate and save 30,000,000 entries
+OOPS: Took 14.844 seconds calculate the mid BP, plus a GC and save 30,000,000 entries
+OOPS: Took 19.572 seconds calculate the mid BP, plus a GC and save 30,000,000 entries
+OOPS: Took 16.703 seconds calculate the mid BP, plus a GC and save 30,000,000 entries
+
+Using memory mapped files to store the data with the same abstractions.
+
+MMAP: Took 0.150 seconds to generate and save 1,000,000 entries
+MMAP: Took 0.079 seconds calculate the mid BP, plus a GC and save 1,000,000 entries
+MMAP: Took 0.054 seconds calculate the mid BP, plus a GC and save 1,000,000 entries
+MMAP: Took 0.056 seconds calculate the mid BP, plus a GC and save 1,000,000 entries
+
+MMAP: Took 0.976 seconds to generate and save 10,000,000 entries
+MMAP: Took 0.474 seconds calculate the mid BP, plus a GC and save 10,000,000 entries
+MMAP: Took 0.450 seconds calculate the mid BP, plus a GC and save 10,000,000 entries
+MMAP: Took 0.455 seconds calculate the mid BP, plus a GC and save 10,000,000 entries
+
+MMAP: Took 2.652 seconds to generate and save 30,000,000 entries
+MMAP: Took 1.351 seconds calculate the mid BP, plus a GC and save 30,000,000 entries
+MMAP: Took 1.335 seconds calculate the mid BP, plus a GC and save 30,000,000 entries
+MMAP: Took 1.295 seconds calculate the mid BP, plus a GC and save 30,000,000 entries
+
+MMAP: Took 8.596 seconds to generate and save 100,000,000 entries
+MMAP: Took 4.475 seconds calculate the mid BP, plus a GC and save 100,000,000 entries
+MMAP: Took 4.294 seconds calculate the mid BP, plus a GC and save 100,000,000 entries
+MMAP: Took 4.450 seconds calculate the mid BP, plus a GC and save 100,000,000 entries
+
+MMAP: Took 21.240 seconds to generate and save 250,000,000 entries
+MMAP: Took 11.150 seconds calculate the mid BP, plus a GC and save 250,000,000 entries
+MMAP: Took 11.132 seconds calculate the mid BP, plus a GC and save 250,000,000 entries
+MMAP: Took 11.008 seconds calculate the mid BP, plus a GC and save 250,000,000 entries
