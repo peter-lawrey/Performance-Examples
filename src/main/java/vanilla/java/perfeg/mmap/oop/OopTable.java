@@ -89,7 +89,7 @@ public class OopTable implements Table {
     }
 
     @Override
-    public <T> Column<T> acquireColumn(String name, Class<T> type) {
+    public Column acquireColumn(String name) {
         return columnMap.get(name);
     }
 

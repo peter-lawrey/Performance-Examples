@@ -26,7 +26,7 @@ public class OopRow implements Row {
 
     @Override
     public boolean nextRecord() {
-        return index++ < oopTable.size();
+        return ++index < oopTable.size();
     }
 
     @Override

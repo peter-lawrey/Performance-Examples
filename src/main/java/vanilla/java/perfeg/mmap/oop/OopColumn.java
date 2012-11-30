@@ -5,7 +5,7 @@ import vanilla.java.perfeg.mmap.api.Column;
 /**
  * @author plawrey
  */
-public abstract class OopColumn<T> implements Column<T> {
+public abstract class OopColumn implements Column {
     private final String name;
 
     public OopColumn(String name) {

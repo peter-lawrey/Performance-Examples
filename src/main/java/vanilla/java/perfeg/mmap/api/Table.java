@@ -10,7 +10,7 @@ public interface Table {
 
     public Row createRow();
 
-    public <T> Column<T> acquireColumn(String name, Class<T> type);
+    public Column acquireColumn(String name);
 
     public void close() throws IOException;
 }
