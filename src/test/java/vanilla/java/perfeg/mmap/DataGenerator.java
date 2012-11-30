@@ -17,8 +17,8 @@ public enum DataGenerator {
         Column bidPrice = table.acquireColumn("bidPrice");
         Column askPrice = table.acquireColumn("askPrice");
         Random rand = new Random(size);
-        long bp = 10000, ap = 10001;
-        int tickSize = 50;
+        long bp = 1000, ap = 1001;
+        int tickSize = 10;
         assert table.size() == 0;
 
         for (int i = 0; i < size; i++) {
