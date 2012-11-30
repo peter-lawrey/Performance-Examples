@@ -1,4 +1,6 @@
 *.class
+.idea
+target
 
 # Package Files #
 *.jar
