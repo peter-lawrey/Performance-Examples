@@ -19,6 +19,7 @@ public enum DataGenerator {
         Random rand = new Random(size);
         long bp = 10000, ap = 10001;
         int tickSize = 50;
+        assert table.size() == 0;
 
         for (int i = 0; i < size; i++) {
             bp += (rand.nextInt(1) - rand.nextInt(1)) * tickSize;
@@ -36,6 +37,8 @@ public enum DataGenerator {
             row.addEntry(i * 10);
             row.set(bidPrice, bp);
             row.set(askPrice, ap);
+
         }
+        assert table.size() == size;
     }
 }
