@@ -22,6 +22,8 @@ OOPS: Took 95.796 seconds calculate the mid BP, plus a GC and save 100,000,000 e
 
 OOPS: Took 340.588 seconds to generate and save 250,000,000 entries
 OOPS: Took 224.854 seconds calculate the mid BP, plus a GC and save 250,000,000 entries
+OOPS: Took 234.013 seconds calculate the mid BP, plus a GC and save 250,000,000 entries
+OOPS: Took 219.476 seconds calculate the mid BP, plus a GC and save 250,000,000 entries
 
 Using memory mapped files to store the data with the same abstractions.
 

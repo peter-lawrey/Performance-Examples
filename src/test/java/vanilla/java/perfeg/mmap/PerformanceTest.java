@@ -28,7 +28,7 @@ public class PerformanceTest {
             long start = System.nanoTime();
             OopTable table = new OopTable(TMP);
             new File(TMP, "data").deleteOnExit();
-            DataGenerator.generateDataFor(table, 250 * 1000 * 1000);
+            DataGenerator.generateDataFor(table, 100 * 1000 * 1000);
             table.close();
             long time = System.nanoTime() - start;
             System.out.printf("OOPS: Took %.3f seconds to generate and save %,d entries%n", time / 1e9, table.size());
@@ -50,7 +50,7 @@ public class PerformanceTest {
         {
             long start = System.nanoTime();
             MmapTable table = new MmapTable(dir);
-            DataGenerator.generateDataFor(table, 250 * 1000 * 1000);
+            DataGenerator.generateDataFor(table, 100 * 1000 * 1000);
             table.close();
             long time = System.nanoTime() - start;
             System.out.printf("MMAP: Took %.3f seconds to generate and save %,d entries%n", time / 1e9, table.size());
