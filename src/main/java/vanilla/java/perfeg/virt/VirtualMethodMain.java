@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
 /*
+On A 3 GHz Xeon
 1 classes, time in ms: 74.0
 2 classes, time in ms: 110.0
 2 classes in 2s, time in ms: 47.9
@@ -28,23 +30,107 @@ import java.util.Map;
 12 classes in 3s, time in ms: 792.5
 12 classes in 4s, time in ms: 523.0
 12 classes in 6s, time in ms: 119.4
+
+On an i2.5 GHz i5,
+1 classes, time in ms: 48.4
+2 classes, time in ms: 115.8
+2 classes in 2s, time in ms: 46.6
+3 classes, time in ms: 285.3
+3 classes in 3s, time in ms: 46.9
+4 classes, time in ms: 668.9
+4 classes in 2s, time in ms: 80.5
+4 classes in 4s, time in ms: 43.7
+6 classes, time in ms: 561.6
+6 classes in 2s, time in ms: 282.5
+6 classes in 3s, time in ms: 92.8
+6 classes in 6s, time in ms: 48.7
+8 classes, time in ms: 498.4
+8 classes in 2s, time in ms: 281.0
+8 classes in 4s, time in ms: 87.1
+8 classes in 8s, time in ms: 54.9
+12 classes, time in ms: 529.6
+12 classes in 2s, time in ms: 275.1
+12 classes in 3s, time in ms: 275.2
+12 classes in 4s, time in ms: 270.7
+12 classes in 6s, time in ms: 111.5
  */
 public class VirtualMethodMain {
     static long i = 0;
 
-    interface R extends Runnable { }
-    static class A implements R { public void run() { i++; } }
-    static class B implements R { public void run() { i++; } }
-    static class C implements R { public void run() { i++; } }
-    static class D implements R { public void run() { i++; } }
-    static class E implements R { public void run() { i++; } }
-    static class F implements R { public void run() { i++; } }
-    static class G implements R { public void run() { i++; } }
-    static class H implements R { public void run() { i++; } }
-    static class I implements R { public void run() { i++; } }
-    static class J implements R { public void run() { i++; } }
-    static class K implements R { public void run() { i++; } }
-    static class L implements R { public void run() { i++; } }
+    interface R extends Runnable {
+    }
+
+    static class A implements R {
+        public void run() {
+            i++;
+        }
+    }
+
+    static class B implements R {
+        public void run() {
+            i++;
+        }
+    }
+
+    static class C implements R {
+        public void run() {
+            i++;
+        }
+    }
+
+    static class D implements R {
+        public void run() {
+            i++;
+        }
+    }
+
+    static class E implements R {
+        public void run() {
+            i++;
+        }
+    }
+
+    static class F implements R {
+        public void run() {
+            i++;
+        }
+    }
+
+    static class G implements R {
+        public void run() {
+            i++;
+        }
+    }
+
+    static class H implements R {
+        public void run() {
+            i++;
+        }
+    }
+
+    static class I implements R {
+        public void run() {
+            i++;
+        }
+    }
+
+    static class J implements R {
+        public void run() {
+            i++;
+        }
+    }
+
+    static class K implements R {
+        public void run() {
+            i++;
+        }
+    }
+
+    static class L implements R {
+        public void run() {
+            i++;
+        }
+    }
 
     public static void main(String[] args) {
         int size = 16 * 3;
