@@ -57,80 +57,19 @@ On an i2.5 GHz i5,
 public class VirtualMethodMain {
     static long i = 0;
 
-    interface R extends Runnable {
-    }
-
-    static class A implements R {
-        public void run() {
-            i++;
-        }
-    }
-
-    static class B implements R {
-        public void run() {
-            i++;
-        }
-    }
-
-    static class C implements R {
-        public void run() {
-            i++;
-        }
-    }
-
-    static class D implements R {
-        public void run() {
-            i++;
-        }
-    }
-
-    static class E implements R {
-        public void run() {
-            i++;
-        }
-    }
-
-    static class F implements R {
-        public void run() {
-            i++;
-        }
-    }
-
-    static class G implements R {
-        public void run() {
-            i++;
-        }
-    }
-
-    static class H implements R {
-        public void run() {
-            i++;
-        }
-    }
-
-    static class I implements R {
-        public void run() {
-            i++;
-        }
-    }
-
-    static class J implements R {
-        public void run() {
-            i++;
-        }
-    }
-
-    static class K implements R {
-        public void run() {
-            i++;
-        }
-    }
-
-    static class L implements R {
-        public void run() {
-            i++;
-        }
-    }
+    interface R extends Runnable { }
+    static class A implements R { public void run() { i++; } }
+    static class B implements R { public void run() { i++; } }
+    static class C implements R { public void run() { i++; } }
+    static class D implements R { public void run() { i++; } }
+    static class E implements R { public void run() { i++; } }
+    static class F implements R { public void run() { i++; } }
+    static class G implements R { public void run() { i++; } }
+    static class H implements R { public void run() { i++; } }
+    static class I implements R { public void run() { i++; } }
+    static class J implements R { public void run() { i++; } }
+    static class K implements R { public void run() { i++; } }
+    static class L implements R { public void run() { i++; } }
 
     public static void main(String[] args) {
         int size = 16 * 3;
