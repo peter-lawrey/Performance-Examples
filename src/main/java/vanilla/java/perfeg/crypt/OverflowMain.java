@@ -36,7 +36,7 @@ public class OverflowMain {
         }
     }
 
-    private static long powMod2_32(int prime, int number) {
+    public static long powMod2_32(int prime, int number) {
         int answer2 = 1;
         int p = prime;
         for (int n = number; n > 0; n >>>= 1) {
