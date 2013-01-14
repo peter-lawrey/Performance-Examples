@@ -5,8 +5,7 @@ import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 
-import static vanilla.java.perfeg.hwlimits.TestPools.report;
-import static vanilla.java.perfeg.hwlimits.TestPools.runTests;
+import static vanilla.java.perfeg.hwlimits.TestPools.*;
 
 /**
  * Data copy scalability
@@ -30,8 +29,6 @@ public class MemoryBusLimitMain {
                 }
             });
         }
-        for (int i = 0; i < 3; i++)
-            report("Data copy scalability for 64 x 8KB", runTests(runs));
 
         List<Callable<long[]>> runs2 = new ArrayList<Callable<long[]>>();
         for (int i = 0; i <= 64; i++) {
@@ -43,7 +40,12 @@ public class MemoryBusLimitMain {
                 }
             });
         }
-        for (int i = 0; i < 3; i++)
-            report("Data copy scalability for 64 x 1 MB", runTests(runs));
+        long[] sum = null, sum2 = null;
+        for (int i = 0; i < 3; i++) {
+            sum = add(sum, runTests(runs));
+            sum2 = add(sum2, runTests(runs2));
+        }
+        report("Data copy scalability for 64 x 8 KB", sum);
+        report("Data copy scalability for 64 x 1 MB", sum2);
     }
 }

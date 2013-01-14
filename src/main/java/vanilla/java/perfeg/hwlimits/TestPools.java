@@ -59,4 +59,13 @@ public enum TestPools {
         for (int i = 0; i < times.length; i++)
             System.out.printf("%3d\t%d%%%n", 1 << i, times[0] * 100 / times[i]);
     }
+
+    public static long[] add(long[] a, long[] b) {
+        if (a == null) return b;
+        if (b == null) return a;
+        long[] ret = new long[Math.min(a.length, b.length)];
+        for (int i = 0; i < ret.length; i++)
+            ret[i] = a[i] + b[i];
+        return ret;
+    }
 }
