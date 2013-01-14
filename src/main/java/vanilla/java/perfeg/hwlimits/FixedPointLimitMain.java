@@ -10,18 +10,21 @@ import static vanilla.java.perfeg.hwlimits.TestPools.runTests;
 
 /**
  */
-public class FloatingPointLimitMain {
+public class FixedPointLimitMain {
     static class Complex {
-        double re, im;
+        static final int FIXED_BITS = 16;
+        static final int FACTOR = 1 << FIXED_BITS;
+
+        int re, im;
 
         Complex(double re, double im) {
-            this.re = re;
-            this.im = im;
+            this.re = (int) (re * FACTOR);
+            this.im = (int) (im * FACTOR);
         }
 
         public void sqrtPlus(Complex a) {
-            double re2 = re * re - im * im + a.re;
-            double im2 = 2 * re * im + a.im;
+            int re2 = (re * re - im * im) / FACTOR + a.re;
+            int im2 = (re * im) / (FACTOR / 2) + a.im;
             re = re2;
             im = im2;
         }
@@ -43,6 +46,6 @@ public class FloatingPointLimitMain {
                 });
             }
         for (int i = 0; i < 3; i++)
-            report("FP scalability", runTests(runs));
+            report("Fixed Point int scalability", runTests(runs));
     }
 }

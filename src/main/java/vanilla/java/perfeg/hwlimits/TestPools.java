@@ -5,11 +5,6 @@ import java.util.List;
 import java.util.concurrent.*;
 
 /**
- * Created with IntelliJ IDEA.
- * User: plawrey
- * Date: 14/01/13
- * Time: 09:14
- * To change this template use File | Settings | File Templates.
  */
 public enum TestPools {
     ;
