@@ -8,7 +8,15 @@ import java.util.concurrent.ExecutionException;
 import static vanilla.java.perfeg.hwlimits.TestPools.report;
 import static vanilla.java.perfeg.hwlimits.TestPools.runTests;
 
-/**
+/*
+Fixed Point int scalability
+threads	percentage speed (1 == 100%)
+  1	100%
+  2	196%
+  4	360%
+  8	564%
+ 16	558%
+ 32	552%
  */
 public class FixedPointLimitMain {
     static class Complex {

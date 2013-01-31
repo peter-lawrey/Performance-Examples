@@ -14,7 +14,15 @@ import java.util.concurrent.ExecutionException;
 import static vanilla.java.perfeg.hwlimits.TestPools.report;
 import static vanilla.java.perfeg.hwlimits.TestPools.runTests;
 
-/**
+/*
+threads	percentage speed (1 == 100%)
+  1	100%
+  2	113%
+  4	117%
+  8	119%
+ 16	120%
+ 32	151%
+
  * Windows with compressed files
  * File reading scalability
  * threads	percentage speed (1 == 100%)
@@ -27,12 +35,12 @@ import static vanilla.java.perfeg.hwlimits.TestPools.runTests;
  */
 public class FileReadingMain {
     public static void main(String... memorySize) throws ExecutionException, InterruptedException, IOException {
-        long sizeGB = memorySize.length > 0 ? Integer.parseInt(memorySize[0]) : 16;
+        long sizeGB = memorySize.length > 0 ? Integer.parseInt(memorySize[0]) : 24;
 
         System.out.println("Writing temporary files of " + sizeGB + " GB");
         List<Callable<ByteBuffer>> runs = new ArrayList<Callable<ByteBuffer>>();
         for (int i = 0; i <= 64; i++) {
-            final File tmpFile = new File("deleteme" + i + ".dat"); //File.createTempFile("deleteme", "dat");
+            final File tmpFile = new File("/home/peter/deleteme" + i + ".dat"); //File.createTempFile("deleteme", "dat");
             tmpFile.deleteOnExit();
             createFile(tmpFile, (sizeGB << 30) / 64);
             runs.add(new Callable<ByteBuffer>() {

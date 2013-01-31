@@ -9,6 +9,14 @@ import static vanilla.java.perfeg.hwlimits.TestPools.report;
 import static vanilla.java.perfeg.hwlimits.TestPools.runTests;
 
 /**
+ * FP scalability
+ * threads	percentage speed (1 == 100%)
+ * 1	100%
+ * 2	196%
+ * 4	386%
+ * 8	709%
+ * 16	689%
+ * 32	676%
  */
 public class FloatingPointLimitMain {
     static class Complex {

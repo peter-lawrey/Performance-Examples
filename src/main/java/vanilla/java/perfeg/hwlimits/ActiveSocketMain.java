@@ -13,7 +13,15 @@ import java.util.concurrent.ExecutionException;
 import static vanilla.java.perfeg.hwlimits.TestPools.report;
 import static vanilla.java.perfeg.hwlimits.TestPools.runTests;
 
-/**
+/*
+Socket echo scalability
+threads	percentage speed (1 == 100%)
+  1	100%
+  2	196%
+  4	367%
+  8	504%
+ 16	505%
+ 32	505%
  */
 public class ActiveSocketMain {
     public static void main(String... ignored) throws ExecutionException, InterruptedException, IOException {
