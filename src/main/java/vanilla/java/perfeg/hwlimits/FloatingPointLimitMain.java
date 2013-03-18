@@ -8,7 +8,7 @@ import java.util.concurrent.ExecutionException;
 import static vanilla.java.perfeg.hwlimits.TestPools.report;
 import static vanilla.java.perfeg.hwlimits.TestPools.runTests;
 
-/**
+/*
  * FP scalability
  * threads	percentage speed (1 == 100%)
  * 1	100%
@@ -17,6 +17,16 @@ import static vanilla.java.perfeg.hwlimits.TestPools.runTests;
  * 8	709%
  * 16	689%
  * 32	676%
+
+Win 7, i5
+FP scalability
+threads	percentage speed (1 == 100%)
+  1	100%
+  2	195%
+  4	308%
+  8	309%
+ 16	318%
+ 32	333%
  */
 public class FloatingPointLimitMain {
     static class Complex {

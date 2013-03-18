@@ -8,6 +8,7 @@ import java.util.concurrent.ExecutionException;
 import static vanilla.java.perfeg.hwlimits.TestPools.*;
 
 /*
+Ubuntu i7,
 Data copy scalability for 64 x 8 KB
 threads	percentage speed (1 == 100%)
   1	100%
@@ -25,14 +26,23 @@ threads	percentage speed (1 == 100%)
  16	138%
  32	139%
 
- * Data copy scalability
- * threads	percentage speed (1 == 100%)
- * 1	100%
- * 2	142%
- * 4	132%
- * 8	125%
- * 16	113%
- * 32	102%
+Win 7, i5
+Data copy scalability for 64 MB as 8 KB
+threads	percentage speed (1 == 100%)
+  1	100%
+  2	123%
+  4	128%
+  8	125%
+ 16	124%
+ 32	127%
+Data copy scalability for 64 MB as 1 MB
+threads	percentage speed (1 == 100%)
+  1	100%
+  2	103%
+  4	108%
+  8	105%
+ 16	107%
+ 32	107%
  */
 public class MemoryBusLimitMain {
     public static void main(String... ignored) throws ExecutionException, InterruptedException {

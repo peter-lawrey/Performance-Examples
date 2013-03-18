@@ -14,6 +14,7 @@ import static vanilla.java.perfeg.hwlimits.TestPools.report;
 import static vanilla.java.perfeg.hwlimits.TestPools.runTests;
 
 /*
+Ubuntu i7
 Socket echo scalability
 threads	percentage speed (1 == 100%)
   1	100%
@@ -22,6 +23,16 @@ threads	percentage speed (1 == 100%)
   8	504%
  16	505%
  32	505%
+
+Win 7 i5
+Socket echo scalability
+threads	percentage speed (1 == 100%)
+  1	100%
+  2	113%
+  4	138%
+  8	166%
+ 16	184%
+ 32	195%
  */
 public class ActiveSocketMain {
     public static void main(String... ignored) throws ExecutionException, InterruptedException, IOException {

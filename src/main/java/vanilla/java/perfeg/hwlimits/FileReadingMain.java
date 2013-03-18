@@ -15,6 +15,7 @@ import static vanilla.java.perfeg.hwlimits.TestPools.report;
 import static vanilla.java.perfeg.hwlimits.TestPools.runTests;
 
 /*
+Ubuntu, i7 SSD
 threads	percentage speed (1 == 100%)
   1	100%
   2	113%
@@ -23,7 +24,7 @@ threads	percentage speed (1 == 100%)
  16	120%
  32	151%
 
- * Windows with compressed files
+Win 7, i3 SSD with compressed files
  * File reading scalability
  * threads	percentage speed (1 == 100%)
  * 1	100%
@@ -32,15 +33,26 @@ threads	percentage speed (1 == 100%)
  * 8	120%
  * 16	138%
  * 32	139%
+ *
+  *
+Win 7, i5 HDD
+File reading scalability
+threads	percentage speed (1 == 100%)
+  1	100%
+  2	69%
+  4	72%
+  8	46%
+ 16	41%
+ 32	32%
  */
 public class FileReadingMain {
     public static void main(String... memorySize) throws ExecutionException, InterruptedException, IOException {
-        long sizeGB = memorySize.length > 0 ? Integer.parseInt(memorySize[0]) : 24;
+        long sizeGB = memorySize.length > 0 ? Integer.parseInt(memorySize[0]) : 16;
 
         System.out.println("Writing temporary files of " + sizeGB + " GB");
         List<Callable<ByteBuffer>> runs = new ArrayList<Callable<ByteBuffer>>();
         for (int i = 0; i <= 64; i++) {
-            final File tmpFile = new File("/home/peter/deleteme" + i + ".dat"); //File.createTempFile("deleteme", "dat");
+            final File tmpFile = new File(System.getProperty("user.dir") + "/deleteme" + i + ".dat"); //File.createTempFile("deleteme", "dat");
             tmpFile.deleteOnExit();
             createFile(tmpFile, (sizeGB << 30) / 64);
             runs.add(new Callable<ByteBuffer>() {

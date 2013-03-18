@@ -9,6 +9,7 @@ import static vanilla.java.perfeg.hwlimits.TestPools.report;
 import static vanilla.java.perfeg.hwlimits.TestPools.runTests;
 
 /*
+Ubuntu i7.
 Fixed Point int scalability
 threads	percentage speed (1 == 100%)
   1	100%
@@ -17,6 +18,16 @@ threads	percentage speed (1 == 100%)
   8	564%
  16	558%
  32	552%
+
+Win 7, i5
+Fixed Point int scalability
+threads	percentage speed (1 == 100%)
+  1	100%
+  2	184%
+  4	261%
+  8	269%
+ 16	273%
+ 32	285%
  */
 public class FixedPointLimitMain {
     static class Complex {
