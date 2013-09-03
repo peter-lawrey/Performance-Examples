@@ -19,8 +19,7 @@ public class PriceSearchMain {
 		for (int sampleSize : new int[]{100_000, 30_000, 10_000, 3_000, 1_000, 300, 100, 30, 10, 3, 1}) {
 			generateProducts(sampleSize);
 
-			long time1 = 0;
-			long time2 = 0;
+			long time1 = 0, time2 = 0, time3 = 0;
 			int count = 0;
 			long start = System.currentTimeMillis();
 			do {
@@ -29,11 +28,12 @@ public class PriceSearchMain {
 					maxPrice = 0.5 + window / 2;
 					time1 += testLoopingFilter();
 					time2 += testFlitering();
+					time3 += testParallelFlitering();
 					count++;
 				}
 			} while (System.currentTimeMillis() - start < 2e3);
-			System.out.printf("%,d: Average time per search was %,d and %,d ns %n",
-					sampleSize, time1 / count, time2 / count);
+			System.out.printf("%,d: Average time per search was %,d as loop, %,d as stream(), %,d as parallelStream() in ns %n",
+					sampleSize, time1 / count, time2 / count, time3 / count);
 		}
 	}
 
@@ -44,12 +44,6 @@ public class PriceSearchMain {
 		}
 	}
 
-	public static long testFlitering() {
-		long start = System.nanoTime();
-		filteredProducts = products.stream().filter(p -> p.price > minPrice).filter(p -> p.price < maxPrice).collect(Collectors.toList());
-		return System.nanoTime() - start;
-	}
-
 	public static long testLoopingFilter() {
 		long start = System.nanoTime();
 		List<Product> found = new ArrayList<>();
@@ -57,6 +51,18 @@ public class PriceSearchMain {
 			if (product.price > minPrice && product.price < maxPrice)
 				found.add(product);
 		filteredProducts = found;
+		return System.nanoTime() - start;
+	}
+
+	public static long testFlitering() {
+		long start = System.nanoTime();
+		filteredProducts = products.stream().filter(p -> p.price > minPrice).filter(p -> p.price < maxPrice).collect(Collectors.toList());
+		return System.nanoTime() - start;
+	}
+
+	public static long testParallelFlitering() {
+		long start = System.nanoTime();
+		filteredProducts = products.parallelStream().filter(p -> p.price > minPrice).filter(p -> p.price < maxPrice).collect(Collectors.toList());
 		return System.nanoTime() - start;
 	}
 
