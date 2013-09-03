@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
  */
 public class PriceSearchMain {
 
-	static List<Product> products = new ArrayList<Product>();
+	static List<Product> products = new ArrayList<>();
 	static volatile List<Product> filteredProducts;
 	static double minPrice, maxPrice;
 
