@@ -9,7 +9,7 @@ import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 /**
- * Created by peter_2 on 23/11/2014.
+ * Created by peter
  */
 public class ExampleMain {
     static {
