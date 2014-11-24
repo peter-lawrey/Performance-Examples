@@ -1,4 +1,4 @@
-package vanilla.java;
+package vanilla.java.unsafe;
 
 import sun.misc.Unsafe;
 
