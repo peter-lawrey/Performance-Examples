@@ -11,11 +11,12 @@ public class MemoryMappingMain {
     public static void main(String... ignored) throws IOException {
 
         File file = new File("/tmp/shared");
-        MappedStore ms = new MappedStore(file, FileChannel.MapMode.READ_WRITE, 4L * 1024 * 1024 * 1024);
+        MappedStore ms = new MappedStore(file, FileChannel.MapMode.READ_WRITE, 64L << 40);
         DirectBytes bytes = ms.bytes();
 //        bytes.writeLong(0L, 1234);
         System.out.println("value=" + bytes.readLong(0L));
-        System.in.read();
+        long end = System.currentTimeMillis() + 30 * 1000;
+        while (end > System.currentTimeMillis()) ;
         ms.free();
     }
 }
