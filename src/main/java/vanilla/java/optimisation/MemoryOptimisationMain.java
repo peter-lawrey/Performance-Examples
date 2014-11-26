@@ -29,8 +29,7 @@ public class MemoryOptimisationMain {
         List<Future<?>> futures = new ArrayList<>();
         Random rand = new Random();
 
-        https:
-//github.com/peter-lawrey/Performance-Examples
+        https://github.com/peter-lawrey/Performance-Examples
         for (int i = 0; i < tasks; i++)
             futures.add(es.submit(() -> {
                 for (int j = 0, len = samples / tasks; j < len; j++) {
