@@ -27,6 +27,10 @@ public class Unsafe2Demo {
         value.set("Hello", "Salut".toCharArray());
 
         System.out.println("Hello");
+
+        synchronized ("one") {
+
+        }
 /*
         Integer x = 5;
         Field value = Integer.class.getDeclaredField("value");

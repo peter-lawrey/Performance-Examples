@@ -9,7 +9,7 @@ import java.nio.channels.FileChannel;
 
 public class MemoryMappingMain {
     public static void main(String... ignored) throws IOException {
-
+        // this example only works on Linux
         File file = new File("/tmp/shared");
         MappedStore ms = new MappedStore(file, FileChannel.MapMode.READ_WRITE, 64L << 40);
         DirectBytes bytes = ms.bytes();

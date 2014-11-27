@@ -23,8 +23,8 @@ public class MemoryOptimisedMain {
         ExecutorService es = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
         for (int t = 0; t < 5; t++) {
             final int range = 1000;
-            final int samples = 1000;
-            final int tasks = 50;
+            final int samples = 10000000;
+            final int tasks = 4;
             long start = System.nanoTime();
             int[] counters0 = new int[range];
             List<Future<int[]>> futures = new ArrayList<>();
