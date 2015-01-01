@@ -1,5 +1,7 @@
 package vanilla.java.perfeg.tcp;
 
+import net.openhft.affinity.AffinitySupport;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -11,6 +13,7 @@ import java.net.Socket;
  */
 public class EchoServerMain {
     public static void main(String... args) throws IOException {
+        AffinitySupport.setAffinity(1 << 2L);
         int port = args.length < 1 ? EchoClientMain.PORT : Integer.parseInt(args[0]);
         ServerSocket ss = new ServerSocket(port);
         System.out.println("listening on " + ss);
