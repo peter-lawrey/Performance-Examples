@@ -38,7 +38,7 @@ public class OSResizesMain {
     public static void main(String[] args) throws IOException, InterruptedException {
         File file = File.createTempFile("over-sized", "deleteme");
         ChronicleMap<String, String> map = ChronicleMapBuilder.of(String.class, String.class)
-                .entrySize(50 * 1024 * 1024)
+                .averageValueSize(50 * 1024 * 1024)
                 .entries(1000 * 1000)
                 .createPersistedTo(file);
         for (int i = 0; i < 10000; i++) {
