@@ -14,9 +14,10 @@ import java.util.Arrays;
 
 // tests=100k, repeats=10 - Loop back echo latency was 29.1/31.6 32.4/32.4 32.4us for 50/90 99/99.9 99.99%tile
 public class EchoClientMain {
+    static final int PORT = 54321;
     public static void main(String... args) throws IOException {
         String hostname = args[0];
-        int port = Integer.parseInt(args[1]);
+        int port = args.length < 2 ? PORT : Integer.parseInt(args[1]);
         int tests = 200000, repeats = 2;
         long[] times = new long[tests * repeats];
 
