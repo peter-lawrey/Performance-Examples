@@ -17,6 +17,7 @@ import java.util.Arrays;
 // tests=100k, repeats=10 - Loop back echo latency was 29.1/31.6 32.4/32.4 32.4us for 50/90 99/99.9 99.99%tile
 public class EchoClientMain {
     static final int PORT = 54321;
+
     public static void main(String... args) throws IOException {
         AffinitySupport.setAffinity(1L << 3);
         String hostname = args[0];
@@ -41,21 +42,25 @@ public class EchoClientMain {
 
     private static void testThroughput(int repeats, DataInputStream[] in, DataOutputStream[] out) throws IOException {
         System.out.println("Starting throughput test");
-        int bufferSize = 8192;
+        int bufferSize = 64 * 1024;
         byte[] bytes = new byte[bufferSize];
-        int count = 0;
+        int count = 0, window = 6;
         long start = System.nanoTime();
         while (System.nanoTime() - start < 5e9) {
             for (int j = 0; j < repeats; j++) {
                 out[j].write(bytes);
                 out[j].flush();
             }
-
+            if (count >= window)
+                for (int j = 0; j < repeats; j++) {
+                    in[j].readFully(bytes);
+                }
+            count++;
+        }
+        for (int end = 0; end < Math.min(count, window); end++)
             for (int j = 0; j < repeats; j++) {
                 in[j].readFully(bytes);
             }
-            count++;
-        }
         long time = System.nanoTime() - start;
         System.out.printf("Throughput was %.1f MB/s%n", 1e3 * count * bufferSize * repeats / time);
     }

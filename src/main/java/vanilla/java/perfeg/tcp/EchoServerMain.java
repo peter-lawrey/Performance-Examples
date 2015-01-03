@@ -26,7 +26,7 @@ public class EchoServerMain {
                         System.out.println("Connected " + socket);
                         InputStream in = socket.getInputStream();
                         OutputStream out = socket.getOutputStream();
-                        byte[] bytes = new byte[8192];
+                        byte[] bytes = new byte[64 * 1024];
                         for (int len; (len = in.read(bytes)) > 0; ) {
                             out.write(bytes, 0, len);
                         }
