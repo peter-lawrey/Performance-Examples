@@ -9,6 +9,7 @@ import java.util.Arrays;
 /**
  * @author peter.lawrey
  */
+// On Loopback: Throughput was 3011.2 MB/s
 // Loopback echo latency was 7.8/8.2 12.7/38.2 us for 50/90 99/99.9%tile
 // 1m - Loopback echo latency was 7.8/8.2 12.3/34.9 81.7us for 50/90 99/99.9 99.99%tile
 // 10m - Loopback echo latency was 7.8/8.2 12.3/40.6 121.1us for 50/90 99/99.9 99.99%tile
