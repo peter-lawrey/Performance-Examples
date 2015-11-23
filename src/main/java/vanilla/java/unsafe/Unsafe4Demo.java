@@ -11,6 +11,7 @@ import java.lang.reflect.Field;
 public class Unsafe4Demo {
 
     static final Unsafe UNSAFE;
+    static final int x = 5;
 
     static {
         try {
@@ -21,8 +22,6 @@ public class Unsafe4Demo {
             throw new AssertionError(e);
         }
     }
-
-    static final int x = 5;
 
     public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException, IOException, InstantiationException {
         System.out.println("Starting");
@@ -44,19 +43,4 @@ public class Unsafe4Demo {
 
     }
 
-    enum MyEnum {
-        A, B;
-    }
-
-    static class MyType {
-        String s;
-        Integer num;
-        Integer num2;
-        long time;
-        double d;
-
-        public MyType(Void v) throws InterruptedException {
-            Thread.sleep(1000);
-        }
-    }
 }

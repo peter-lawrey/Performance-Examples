@@ -59,12 +59,4 @@ public class Unsafe2Demo {
         System.out.printf("mt.s=%x%n", UNSAFE.getInt(mt, sOff));
 */
     }
-
-    static class MyType {
-        String s;
-        Integer num;
-        Integer num2;
-        long time;
-        double d;
-    }
 }

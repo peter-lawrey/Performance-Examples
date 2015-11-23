@@ -1,6 +1,6 @@
 package vanilla.java.perfeg.tcp;
 
-import net.openhft.affinity.AffinitySupport;
+import net.openhft.affinity.Affinity;
 
 import java.io.*;
 import java.net.Socket;
@@ -20,7 +20,7 @@ public class EchoClientMain {
     static final int PORT = 54321;
 
     public static void main(String... args) throws IOException {
-        AffinitySupport.setAffinity(1L << 3);
+        Affinity.setAffinity(3);
         String hostname = args[0];
         int port = args.length < 2 ? PORT : Integer.parseInt(args[1]);
         int repeats = 2;

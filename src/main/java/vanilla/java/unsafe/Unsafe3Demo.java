@@ -26,12 +26,4 @@ public class Unsafe3Demo {
         // todo don't do this.
         UNSAFE.getInt(0L);
     }
-
-    static class MyType {
-        String s;
-        Integer num;
-        Integer num2;
-        long time;
-        double d;
-    }
 }
