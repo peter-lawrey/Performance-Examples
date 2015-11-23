@@ -26,7 +26,8 @@ public class ShowFields2Main {
     public static void main(String[] args) {
         Stream.of(MyClass.class, MyClass.class.getSuperclass())
                 .flatMap(c -> Stream.of(c.getDeclaredFields()))
-                .collect(Collectors.groupingBy(UNSAFE::objectFieldOffset, TreeMap::new,
+                .collect(Collectors.groupingBy(UNSAFE::objectFieldOffset,
+                        TreeMap::new,
                         Collectors.reducing(null, (n, v) -> v)))
                 .entrySet()
                 .forEach(System.out::println);
