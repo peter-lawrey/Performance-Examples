@@ -7,8 +7,8 @@ import java.lang.reflect.Field;
  */
 public class ShowFieldsMain {
     public static void main(String[] args) {
-        for(Field field: MyClass.class.getDeclaredFields()) {
-            System.out.println(field);
-        }
+        for (Class c = MyClass.class; c != null; c = c.getSuperclass())
+            for (Field field : c.getDeclaredFields())
+                System.out.println(field);
     }
 }
