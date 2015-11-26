@@ -6,12 +6,12 @@ package vanilla.java;
 public class LatencyMain {
     public static void main(String... args) throws InterruptedException {
         long start = System.currentTimeMillis();
-        int count = 10_000_000;
+        int count = 5_000;
         for (int i = 0; i < count; i++) {
-            Thread.yield();
+            Thread.sleep(1);
         }
         long time = System.currentTimeMillis() - start;
-        double throughput = count * 1e3 / time;
-        System.out.printf("Throughput %.1f per second%n", throughput);
+        double average = (double) time / count;
+        System.out.printf("Average latency %.3f milli-seconds%n", average);
     }
 }
