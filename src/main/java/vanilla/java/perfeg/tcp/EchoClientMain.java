@@ -23,7 +23,7 @@ public class EchoClientMain {
         Affinity.setAffinity(3);
         String hostname = args.length < 1 ? "localhost" : args[0];
         int port = args.length < 2 ? PORT : Integer.parseInt(args[1]);
-        int repeats = 2;
+        int repeats = 1;
 
         Socket[] sockets = new Socket[repeats];
         DataInputStream[] in = new DataInputStream[repeats];
