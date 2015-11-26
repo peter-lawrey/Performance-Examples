@@ -1,49 +1,61 @@
 package vanilla.java.threads;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * Created by peter.lawrey on 26/11/2015.
  */
 public class PrimeNumbersStreamsMain {
+    final ConcurrentMap<String, String> cache = new ConcurrentHashMap<>();
+
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         long start = System.currentTimeMillis();
-        List<Integer> primes = new ArrayList<>();
-
-        int procs = Runtime.getRuntime().availableProcessors();
-        ExecutorService es = Executors.newFixedThreadPool(procs);
-        List<Future<Integer>> futures = new ArrayList<>();
-        for (int i = 2; i <= 10_000_000; i++) { ////////
-            final int finalI = i;
-            futures.add(es.submit(() -> {
-                if (isPrime(finalI)) ////////
-                    return finalI; ////////
-                return null;
-            }));
-        }
-        for (Future<Integer> future : futures) {
-            Integer i = future.get();
-            if (i != null)
-                primes.add(i); ////////
-        }
-        es.shutdown();
+        List<String> list = Arrays.asList("a,b,c,d,e,f,g".split(","));
+        list.forEach(System.out::println);
+        List<Integer> primes =
+                IntStream.rangeClosed(2, 10_000_000)
+                        .parallel()
+                        .filter(i -> isPrime(i))
+                        .boxed()
+                        .collect(Collectors.toList());
 
         long time = System.currentTimeMillis() - start;
         System.out.printf("Took %.3f seconds%n", time / 1e3);
         System.out.println("Primes= " + primes.size());
     }
 
-    private static boolean isPrime(int i) {
+    static boolean isPrime(int i) {
         if ((i & 1) == 0)
             return false;
         for (int j = 3; j <= (int) Math.sqrt(i); j += 2)
             if (i % j == 0)
                 return false;
         return true;
+    }
+
+    public String cachedExpensive(String s) {
+        String value = cache.get(s);
+        if (value != null)
+            return value;
+        synchronized (cache) {
+            value = cache.get(s);
+            if (value == null)
+                cache.put(s, value = expensive(s));
+            return value;
+        }
+    }
+
+    public String cachedExpensive8(String s) {
+        return cache.computeIfAbsent(s, this::expensive);
+    }
+
+    private String expensive(String s) {
+        return s;
     }
 }

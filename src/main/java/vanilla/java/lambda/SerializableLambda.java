@@ -7,7 +7,17 @@ import net.openhft.chronicle.core.util.SerializableConsumer;
  */
 public class SerializableLambda {
     public static void main(String[] args) {
-        SerializableConsumer<String> cs =
-                s -> System.out.println(s);
+//        Serializable printMe =
+//                (Consumer<String> & Serializable)
+//                        s -> System.out.println(s);
+        new SerializableLambda().call();
+    }
+
+    private void call() {
+        apply(s -> System.out.println(s));
+    }
+
+    public void apply(SerializableConsumer<String> cs) {
+        cs.accept("Hello World");
     }
 }
