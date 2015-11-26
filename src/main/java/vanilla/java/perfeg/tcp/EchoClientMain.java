@@ -21,7 +21,7 @@ public class EchoClientMain {
 
     public static void main(String... args) throws IOException {
         Affinity.setAffinity(3);
-        String hostname = args[0];
+        String hostname = args.length < 1 ? "localhost" : args[0];
         int port = args.length < 2 ? PORT : Integer.parseInt(args[1]);
         int repeats = 2;
 
@@ -43,9 +43,9 @@ public class EchoClientMain {
 
     private static void testThroughput(int repeats, DataInputStream[] in, DataOutputStream[] out) throws IOException {
         System.out.println("Starting throughput test");
-        int bufferSize = 64 * 1024;
+        int bufferSize = 32 * 1024;
         byte[] bytes = new byte[bufferSize];
-        int count = 0, window = 6;
+        int count = 0, window = 2;
         long start = System.nanoTime();
         while (System.nanoTime() - start < 5e9) {
             for (int j = 0; j < repeats; j++) {
