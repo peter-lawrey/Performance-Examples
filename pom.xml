@@ -8,6 +8,9 @@
     <artifactId>Performance-Examples</artifactId>
     <version>1.0</version>
 
+    <properties>
+        <jmh.version>1.11.2</jmh.version>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>net.openhft</groupId>
@@ -23,6 +26,18 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>${jmh.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${jmh.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
