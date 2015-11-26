@@ -6,7 +6,6 @@ import net.openhft.chronicle.engine.api.pubsub.Reference;
 import net.openhft.chronicle.engine.api.pubsub.TopicPublisher;
 import net.openhft.chronicle.engine.api.tree.AssetTree;
 import net.openhft.chronicle.engine.tree.VanillaAssetTree;
-import net.openhft.chronicle.network.TCPRegistry;
 
 import java.io.IOException;
 
@@ -26,6 +25,7 @@ public class MapPubSubMain {
         Reference<String> three = tree.acquireReference("/group/map/one", String.class);
         three.registerSubscriber(true, 0, s -> System.out.println("one: " + s));
         three.publish("test");
+
         long len = three.syncUpdate(s -> s + 2, s -> (long) s.length());
         System.out.println("one.length() = " + len);
         three.asyncUpdate(s -> s.substring(0, 4) + " two");
@@ -39,7 +39,5 @@ public class MapPubSubMain {
 
         topicPublisher.publish("four", "4444");
         map.remove("four");
-
-        TCPRegistry.reset();
     }
 }
