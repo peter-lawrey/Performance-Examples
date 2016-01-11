@@ -1,23 +1,33 @@
 package vanilla.java.references;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+
+import static vanilla.java.references.ShowFields2Main.UNSAFE;
 
 /**
  * Created by peter.lawrey on 23/11/2015.
  */
 public class HashcodeMain {
     public static void main(String[] args) {
-        /*Object o = new Object();
+        Object o = new Object();
         int hc0 = UNSAFE.getInt(o, 1L);
         System.out.println(Integer.toHexString(hc0));
 
+        System.out.println(o);
         System.out.println(o);
 
         int hc = UNSAFE.getInt(o, 1L);
         System.out.println(Integer.toHexString(hc));
 
+        UNSAFE.putInt(o, 1L, 0);
+        System.out.println(o);
+        System.out.println(Integer.toHexString(System.identityHashCode(o)));
+
+        String s = "hello";
+        System.out.println(s.hashCode());
+        System.out.println(System.identityHashCode(s));
+        System.out.println(UNSAFE.getInt(s, 1L));
+
+        /*
         String s = "hello";
         String s2 = new String("hello");
         System.out.println(s.hashCode());
@@ -28,13 +38,5 @@ public class HashcodeMain {
         System.out.println(System.identityHashCode(s));
         System.out.println(System.identityHashCode(s2));
         */
-        Date d = new Date(1L * 1000);
-        List<Date> dates = new ArrayList<>();
-        dates.add(d);
-        for (int i = 2; i <= 10; i++) {
-            d.setTime(i * 1000);
-            dates.add(d);
-        }
-        System.out.println("dates: " + dates.size() + " " + dates);
     }
 }

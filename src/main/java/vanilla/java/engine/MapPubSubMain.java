@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public class MapPubSubMain {
     public static void main(String[] args) throws IOException {
-        AssetTree tree = new VanillaAssetTree("client").forTesting();
+        AssetTree tree = new VanillaAssetTree("client").forTesting(Throwable::printStackTrace);
         MapView<String, String> map = tree.acquireMap("/group/map", String.class, String.class);
         map.put("one", "hello");
         map.put("two", "bye");

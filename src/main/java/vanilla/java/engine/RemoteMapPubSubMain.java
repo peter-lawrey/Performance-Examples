@@ -21,11 +21,11 @@ public class RemoteMapPubSubMain {
 //        YamlLogging.setAll(true);
         TCPRegistry.createServerSocketChannelFor("test.host.port");
 
-        AssetTree remoteTree = new VanillaAssetTree("test").forServer();
+        AssetTree remoteTree = new VanillaAssetTree("test").forServer(Throwable::printStackTrace);
         ServerEndpoint serverEndpoint = new ServerEndpoint("test.host.port", remoteTree, WireType.TEXT);
 
 
-        AssetTree tree = new VanillaAssetTree("client").forRemoteAccess("test.host.port", WireType.TEXT);
+        AssetTree tree = new VanillaAssetTree("client").forRemoteAccess("test.host.port", WireType.TEXT, Throwable::printStackTrace);
         MapView<String, String> map = tree.acquireMap("/group/map", String.class, String.class);
 
         Subscription subscribe = map.entrySet()

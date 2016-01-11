@@ -7,11 +7,23 @@ import static vanilla.java.references.ShowFields2Main.UNSAFE;
  */
 public class ObjectReferencesMain {
     public static void main(String[] args) {
-        Object[] objs = new Object[10];
+/*
+        String s = "hello";
+        String t = new String("hello");
+        String u = t.intern();
+        System.out.println(s == t);
+        System.out.println(s ==u);
+
+        synchronized ("one") {
+
+        }
+*/
+        Integer[] objs = new Integer[10];
         for (int i = 0; i < objs.length; i++)
-            objs[i] = new Object();
+            objs[i] = i * 30;
 
         printAddresses(objs);
+
         System.gc();
 
         printAddresses(objs);
