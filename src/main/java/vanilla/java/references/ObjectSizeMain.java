@@ -1,20 +1,22 @@
 package vanilla.java.references;
 
-import java.util.BitSet;
-
 /**
  * Created by peter.lawrey on 22/11/2015.
  */
 public class ObjectSizeMain {
+    // https://github.com/peter-lawrey/Performance-Examples.git
+
     public static void main(String[] args) {
 //        IntStream.range(0, 1).forEach(System.out::println);
 
         for (int i = 0; i < 3; i++) {
             long used1 = memoryUsed();
 
-            BitSet flags = new BitSet(1000);
+//            BitSet flags = new BitSet(1000);
+            Boolean[] flags = new Boolean[1000];
             for (int j = 0; j < 1000; j++) {
-                flags.set(j, i % 2 == 0);
+//                flags.set(j, i % 2 == 0);
+                flags[i] = new Boolean(i % 2 == 0);
             }
 
             long used2 = memoryUsed();

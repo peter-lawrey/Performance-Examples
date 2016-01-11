@@ -14,19 +14,21 @@ public class ObjectReferencesMain {
         System.out.println(s == t);
         System.out.println(s ==u);
 
+
         synchronized ("one") {
 
         }
 */
         Integer[] objs = new Integer[10];
         for (int i = 0; i < objs.length; i++)
-            objs[i] = i * 30;
+            objs[i] = Integer.valueOf(i * 25);
 
         printAddresses(objs);
 
         System.gc();
 
         printAddresses(objs);
+
     }
 
     private static void printAddresses(Object[] objs) {
