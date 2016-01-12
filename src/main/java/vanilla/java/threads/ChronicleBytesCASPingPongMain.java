@@ -19,6 +19,7 @@ public class ChronicleBytesCASPingPongMain {
 
     public ChronicleBytesCASPingPongMain() throws IOException {
         bytes = MappedBytes.mappedBytes("deleteme", OS.pageSize());
+
         bytes.writeLong(COUNTER_OFFSET, 0L);
         bytes.writeInt(TOGGLE_OFFSET, 0);
     }

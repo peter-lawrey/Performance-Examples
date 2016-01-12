@@ -16,10 +16,10 @@ public class LockConditionPingPongMain {
     long count = 0;
 
     public static void main(String... args) throws InterruptedException {
-        LockConditionPingPongMain wnppm = new LockConditionPingPongMain();
+        LockConditionPingPongMain ppm = new LockConditionPingPongMain();
 
-        Thread t1 = wnppm.createThread(true);
-        Thread t2 = wnppm.createThread(false);
+        Thread t1 = ppm.createThread(true);
+        Thread t2 = ppm.createThread(false);
         long start = System.currentTimeMillis();
         Thread.sleep(5000);
         t1.interrupt();
@@ -27,7 +27,7 @@ public class LockConditionPingPongMain {
         long time = System.currentTimeMillis() - start;
         t1.join();
         t2.join();
-        System.out.println("Counted to " + wnppm.count * 1000 / time + " toggles per second.");
+        System.out.println("Counted to " + ppm.count * 1000 / time + " toggles per second.");
     }
 
     @NotNull

@@ -13,10 +13,10 @@ public class CASPingPongMain {
     final AtomicLong count = new AtomicLong();
 
     public static void main(String... args) throws InterruptedException {
-        CASPingPongMain wnppm = new CASPingPongMain();
+        CASPingPongMain ppm = new CASPingPongMain();
 
-        Thread t1 = wnppm.createThread(true);
-        Thread t2 = wnppm.createThread(false);
+        Thread t1 = ppm.createThread(true);
+        Thread t2 = ppm.createThread(false);
         long start = System.currentTimeMillis();
         Thread.sleep(5000);
         t1.interrupt();
@@ -24,7 +24,7 @@ public class CASPingPongMain {
         long time = System.currentTimeMillis() - start;
         t1.join();
         t2.join();
-        System.out.println("Counted to " + wnppm.count.get() * 1000 / time + " toggles per second.");
+        System.out.println("Counted to " + ppm.count.get() * 1000 / time + " toggles per second.");
     }
 
     @NotNull
@@ -36,8 +36,10 @@ public class CASPingPongMain {
 
     void runLoop(boolean flag) {
         while (!Thread.currentThread().isInterrupted()) {
-            if (toggle.compareAndSet(!flag, flag))
+            if (toggle.compareAndSet(!flag, flag)) {
+//                count.getAndUpdate(l -> (l + 1) % 24);
                 count.incrementAndGet();
+            }
         }
         System.out.println(flag + " - finished");
     }

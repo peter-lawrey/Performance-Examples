@@ -34,10 +34,10 @@ public class NativeCASPingPongMain {
     }
 
     public static void main(String... args) throws InterruptedException {
-        NativeCASPingPongMain wnppm = new NativeCASPingPongMain();
+        NativeCASPingPongMain ppm = new NativeCASPingPongMain();
 
-        Thread t1 = wnppm.createThread(true);
-        Thread t2 = wnppm.createThread(false);
+        Thread t1 = ppm.createThread(true);
+        Thread t2 = ppm.createThread(false);
         long start = System.currentTimeMillis();
         Thread.sleep(5000);
         t1.interrupt();
@@ -45,7 +45,7 @@ public class NativeCASPingPongMain {
         long time = System.currentTimeMillis() - start;
         t1.join();
         t2.join();
-        System.out.println("Counted to " + wnppm.getCount() * 1000 / time + " toggles per second.");
+        System.out.printf("Counted to %,d  toggles per second.%n", ppm.getCount() * 1000 / time);
     }
 
     @NotNull
