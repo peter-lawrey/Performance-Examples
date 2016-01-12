@@ -1,0 +1,11 @@
+Java Questions - What are they talking about?
+
+Java 5 - The actual version was "Java 5.0"
+
+Java 4 - The actual version was "Java 1.4" although often "Java 1.4.2" is the version they have in mind.
+
+mb - This could refer to mega-bytes (10^6 bytes), mebi-bytes (1024^2 bytes)
+
+mb/s - This could refer to mega-bytes/second (disk), mebi-bytes/second (memory),
+           mega-baud/second (network utilisation), mega-bits/second.
+

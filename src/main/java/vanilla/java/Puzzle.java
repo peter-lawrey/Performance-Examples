@@ -11,14 +11,13 @@ public class Puzzle {
         Field value = Integer.class.getDeclaredField("value");
         value.setAccessible(true);
         value.setInt(i, 6);
-        {
-            Integer x = 2;
-            Integer y = 3;
-            Integer z = x + y;
-            System.out.println(x + " + " + y + " is " + z);
-            Integer a = 5;
-            Integer b = 6;
-            System.out.println(5 + " + " + b + " is equals " + a.equals(b));
-        }
+
+        Integer x = 2;
+        Integer y = 3;
+        Integer z = x + y;
+        System.out.println(x + " + " + y + " is " + z);
+        Integer a = 5;
+        Integer b = 6;
+        System.out.println(5 + " & " + b + " is equals " + a.equals(b));
     }
 }
