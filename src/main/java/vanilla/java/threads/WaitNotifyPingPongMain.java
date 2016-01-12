@@ -15,7 +15,7 @@ public class WaitNotifyPingPongMain {
         Thread t1 = wnppm.createThread(true);
         Thread t2 = wnppm.createThread(false);
         long start = System.currentTimeMillis();
-        Thread.sleep(1000);
+        Thread.sleep(5000);
         t1.interrupt();
         t2.interrupt();
         long time = System.currentTimeMillis() - start;
