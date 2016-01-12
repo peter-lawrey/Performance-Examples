@@ -1,48 +1,30 @@
 package vanilla.java.threads;
 
+import net.openhft.chronicle.bytes.Bytes;
+import net.openhft.chronicle.bytes.MappedBytes;
 import net.openhft.chronicle.core.OS;
 import org.jetbrains.annotations.NotNull;
-import sun.misc.Unsafe;
-import sun.nio.ch.DirectBuffer;
 
 import java.io.IOException;
-import java.io.RandomAccessFile;
-import java.lang.reflect.Field;
-import java.nio.MappedByteBuffer;
-import java.nio.channels.FileChannel;
 
 /**
  * Created by peter.lawrey on 12/01/2016.
  */
-public class SharedCASPingPongMain {
+public class ChronicleBytesCASPingPongMain {
     static final int SIZE = 16;
     static final int COUNTER_OFFSET = 0;
     static final int TOGGLE_OFFSET = SIZE - 8;
 
-    static final Unsafe UNSAFE;
+    final Bytes bytes;
 
-    static {
-        try {
-            Field theUnsafe = Unsafe.class.getDeclaredField("theUnsafe");
-            theUnsafe.setAccessible(true);
-            UNSAFE = (Unsafe) theUnsafe.get(null);
-        } catch (Exception e) {
-            throw new AssertionError(e);
-        }
-    }
-
-    final long address;
-
-    public SharedCASPingPongMain() throws IOException {
-        RandomAccessFile raf = new RandomAccessFile("deleteme", "rw");
-        MappedByteBuffer map = raf.getChannel().map(FileChannel.MapMode.READ_WRITE, 0, OS.pageSize());
-        address = ((DirectBuffer) map).address();
-        UNSAFE.putLong(address + COUNTER_OFFSET, 0L);
-        UNSAFE.putInt(address + TOGGLE_OFFSET, 0);
+    public ChronicleBytesCASPingPongMain() throws IOException {
+        bytes = MappedBytes.mappedBytes("deleteme", OS.pageSize());
+        bytes.writeLong(COUNTER_OFFSET, 0L);
+        bytes.writeInt(TOGGLE_OFFSET, 0);
     }
 
     public static void main(String... args) throws InterruptedException, IOException {
-        SharedCASPingPongMain ppm = new SharedCASPingPongMain();
+        ChronicleBytesCASPingPongMain ppm = new ChronicleBytesCASPingPongMain();
         boolean flag = Boolean.parseBoolean(args[0]);
         for (int i = 0; i < 10; )
             if (ppm.toggleCompareAndSet(!flag, flag))
@@ -50,6 +32,7 @@ public class SharedCASPingPongMain {
         System.out.println("toggling");
 
         Thread t1 = ppm.createThread(flag);
+
         long start = System.currentTimeMillis();
         Thread.sleep(5000);
         t1.interrupt();
@@ -74,14 +57,14 @@ public class SharedCASPingPongMain {
     }
 
     public boolean toggleCompareAndSet(boolean from, boolean to) {
-        return UNSAFE.compareAndSwapInt(null, address + TOGGLE_OFFSET, from ? 1 : 0, to ? 1 : 0);
+        return bytes.compareAndSwapInt(TOGGLE_OFFSET, from ? 1 : 0, to ? 1 : 0);
     }
 
     public void countIncrement() {
-        UNSAFE.getAndAddLong(null, address + COUNTER_OFFSET, 1);
+        bytes.addAndGetInt(COUNTER_OFFSET, 1);
     }
 
     public long getCount() {
-        return UNSAFE.getLongVolatile(null, address + COUNTER_OFFSET);
+        return bytes.readVolatileLong(COUNTER_OFFSET);
     }
 }
