@@ -121,11 +121,11 @@ TimeBenchmark.usingLong           thrpt   20  125.271 ± 0.931  ops/us
 @State(Scope.Thread)
 public class TimeBenchmark {
     public static void main(String[] args) throws RunnerException {
-        long time = 10;
+        long time = 2;
         Options opt = new OptionsBuilder()
                 .include(TimeBenchmark.class.getSimpleName())
                 .warmupIterations(6)
-                .forks(1)
+                .forks(3)
                 .measurementTime(TimeValue.seconds(time))
                 .timeUnit(TimeUnit.MICROSECONDS)
                 .build();
