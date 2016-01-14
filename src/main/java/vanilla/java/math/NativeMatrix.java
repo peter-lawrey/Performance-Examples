@@ -39,7 +39,7 @@ public class NativeMatrix {
     }
 
     private long calcSize(int rows, int columns) {
-        return HEADER_SIZE + rows * columns * Double.SIZE;
+        return HEADER_SIZE + rows * columns * Double.BYTES;
     }
 
     @Override
@@ -60,6 +60,6 @@ public class NativeMatrix {
     private long index(int row, int column) {
         if (row < 0 || row >= rows) throw new IllegalArgumentException();
         if (column < 0 || column >= columns) throw new IllegalArgumentException();
-        return HEADER_SIZE + (row * columns + column) * Double.SIZE;
+        return HEADER_SIZE + (row * columns + column) * Double.BYTES;
     }
 }

@@ -31,7 +31,7 @@ public class BytesMatrix {
     }
 
     private long calcSize(int rows, int columns) {
-        return HEADER_SIZE + rows * columns * Double.SIZE;
+        return HEADER_SIZE + rows * columns * Double.BYTES;
     }
 
     public void set(int row, int column, double value) {
@@ -48,9 +48,9 @@ public class BytesMatrix {
         assert row < 0 || row >= maxRows;
         assert column < 0 || column >= columns;
         if (row >= rowsUsed) {
-            bytes.zeroOut(rowsUsed * columns * Double.SIZE, (row + 1) * columns * Double.SIZE);
+            bytes.zeroOut(rowsUsed * columns * Double.BYTES, (row + 1) * columns * Double.BYTES);
             bytes.writeInt(USED_ROWS_OFFSET, rowsUsed = row + 1);
         }
-        return HEADER_SIZE + (row * columns + column) * Double.SIZE;
+        return HEADER_SIZE + (row * columns + column) * Double.BYTES;
     }
 }
