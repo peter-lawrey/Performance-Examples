@@ -8,6 +8,7 @@ import java.lang.reflect.Field;
  * Created by peter.lawrey on 14/01/2016.
  */
 public class NativeMatrix {
+    // TODO use Bytes instead.
     static final Unsafe UNSAFE;
     private static final long ROWS_OFFSET = 0L;
     private static final long COLUMNS_OFFSET = 4L;
