@@ -7,6 +7,13 @@ import java.lang.reflect.Field;
 /**
  * Created by peter.lawrey on 07/02/2016.
  */
+/*
+Object.hashCode takes 5 ns on average
+Object.hashCode takes 8 ns on average
+Object.hashCode takes 5 ns on average
+Object.hashCode takes 4 ns on average
+Object.hashCode takes 4 ns on average
+ */
 public class FasterHashCodePref {
     static final Unsafe UNSAFE;
     static int keep, keep2;
