@@ -26,12 +26,19 @@ public class BytesMatrix {
         bytes.writeInt(COLUMNS_OFFSET, columns);
     }
 
+    public static void main(String... args) {
+        BytesMatrix bm = new BytesMatrix(1024 * 1024, 1024);
+//        bm.set(1000000, 0, 1.0);
+        while (true)
+            Thread.yield();
+    }
+
     public long address() {
         return bytes.address(0);
     }
 
     private long calcSize(int rows, int columns) {
-        return HEADER_SIZE + rows * columns * Double.BYTES;
+        return HEADER_SIZE + (long) rows * columns * Double.BYTES;
     }
 
     public void set(int row, int column, double value) {

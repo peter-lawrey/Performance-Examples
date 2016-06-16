@@ -9,7 +9,7 @@
     <version>1.0</version>
 
     <properties>
-        <jmh.version>1.11.2</jmh.version>
+        <jmh.version>1.11.3</jmh.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
