@@ -22,7 +22,7 @@ public class RemoteMapPubSubMain {
         TCPRegistry.createServerSocketChannelFor("test.host.port");
 
         AssetTree remoteTree = new VanillaAssetTree("test").forServer(Throwable::printStackTrace);
-        ServerEndpoint serverEndpoint = new ServerEndpoint("test.host.port", remoteTree, WireType.TEXT);
+        ServerEndpoint serverEndpoint = new ServerEndpoint("test.host.port", remoteTree);
 
 
         AssetTree tree = new VanillaAssetTree("client").forRemoteAccess("test.host.port", WireType.TEXT, Throwable::printStackTrace);
