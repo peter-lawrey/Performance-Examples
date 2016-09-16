@@ -21,7 +21,7 @@ public class AccessRawMemoryMain {
         }
     }
 
-    // run with: -ea -XX:-UseCompressedOops
+    // run with: -ea
     public static void main(String[] args) {
         Object i = 0x12345678;
         System.out.printf("indentityHashCode = %08x%n", System.identityHashCode(i));
