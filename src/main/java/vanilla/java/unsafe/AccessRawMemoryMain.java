@@ -33,7 +33,8 @@ public class AccessRawMemoryMain {
             System.out.printf("%02x ", UNSAFE.getByte(address + j) & 0xFF);
         System.out.println();
         // now some really scary sh!t
-        UNSAFE.putLong(i, 8L, UNSAFE.getLong(0L, 8L));
+        long longClassPointer = UNSAFE.getLong(0L, 8L);
+        UNSAFE.putLong(i, 8L, longClassPointer);
         System.out.printf("`i` is now a %s and is %x%n", i.getClass(), i);
     }
 }

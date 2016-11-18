@@ -29,7 +29,7 @@ public class UnsafeResetHashCodeDemo {
         MyType mt = new MyType();
         long end = memoryUsed();
         System.out.printf("%s used %,d bytes%n", MyType.class, end - start);
-
+/*
         for (Field field : MyType.class.getDeclaredFields()) {
             long offset = UNSAFE.objectFieldOffset(field);
             System.out.printf("Field %s, offset %d%n", field, offset);
@@ -41,10 +41,10 @@ public class UnsafeResetHashCodeDemo {
             int hc1 = mt.hashCode();
             int hc2 = UNSAFE.getInt(mt, 1L);
             System.out.printf("Hash code is %x == %x%n", hc1, hc2);
-        }
+        }*/
 
         for (int i = 0; i < 10; i++) {
-            UNSAFE.putInt(mt, 1L, 0x0);
+            UNSAFE.putInt(mt, 1L, i);
             {
                 int hc1 = mt.hashCode();
                 int hc2 = UNSAFE.getInt(mt, 1L);

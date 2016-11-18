@@ -30,8 +30,10 @@ public class UnsafeIdentityDemo {
         Double d2 = 1.0;
         setIdentityHashCode(d, 1);
         setIdentityHashCode(d2, 1);
-        System.out.println("d: " + d + " System.identityHashCode(d): " + System.identityHashCode(d));
-        System.out.println("d2: " + d2 + " System.identityHashCode(d2): " + System.identityHashCode(d2));
+        System.out.println("d: " + d +
+                " System.identityHashCode(d): " + System.identityHashCode(d));
+        System.out.println("d2: " + d2 +
+                " System.identityHashCode(d2): " + System.identityHashCode(d2));
         System.out.println("d == d2: " + (d == d2));
     }
 }

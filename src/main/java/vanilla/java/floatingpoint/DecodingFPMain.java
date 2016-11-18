@@ -13,7 +13,7 @@ public class DecodingFPMain {
         manitissa += 1L << 52;
         String manitissaText = "1." + Long.toBinaryString(manitissa).substring(1);
         manitissaText = manitissaText.replaceAll("0+$", "");
-        return d + " == " + (sign ? "+" : "-") + manitissaText + "*2^" + exponent;
+        return d + " ==\n" + (sign ? "+" : "-") + manitissaText + "*2^" + exponent;
     }
 
     public static void main(String[] args) {
@@ -25,14 +25,15 @@ public class DecodingFPMain {
         System.out.println(printFP(1));
         System.out.println(printFP(0.5));
 
-//        System.out.println(printFP(0.1));
-//        System.out.println(printFP(0.2));
-//        System.out.println(printFP(0.3));
+        System.out.println(printFP(0.1));
+        System.out.println(printFP(0.2));
+        System.out.println(printFP(0.1 + 0.2));
+        System.out.println(printFP(0.3));
 
-//        System.out.println(printFP(Double.NEGATIVE_INFINITY));
-//        System.out.println(printFP(-0.0));
-//        System.out.println(printFP(0.0));
-//        System.out.println(printFP(Double.POSITIVE_INFINITY));
-//        System.out.println(printFP(Double.NaN));
+        System.out.println(printFP(Double.NEGATIVE_INFINITY));
+        System.out.println(printFP(-0.0));
+        System.out.println(printFP(0.0));
+        System.out.println(printFP(Double.POSITIVE_INFINITY));
+        System.out.println(printFP(Double.NaN));
     }
 }
