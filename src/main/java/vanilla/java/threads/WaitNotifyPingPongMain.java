@@ -21,7 +21,7 @@ public class WaitNotifyPingPongMain {
         long time = System.currentTimeMillis() - start;
         t1.join();
         t2.join();
-        System.out.println("Counted to " + wnppm.count * 1000 / time + " toggles per second.");
+        System.out.printf("Counted to %,d toggles per second.%n", wnppm.count * 1000 / time);
     }
 
     @NotNull
@@ -32,7 +32,6 @@ public class WaitNotifyPingPongMain {
     }
 
     synchronized void runLoop(boolean flag) {
-//        Thread.currentThread().setName("toggle-"+flag);
         try {
             while (!Thread.currentThread().isInterrupted()) {
                 while (toggle == flag) {
@@ -42,7 +41,7 @@ public class WaitNotifyPingPongMain {
                 count++;
                 notifyAll();
             }
-        } catch (InterruptedException e) {
+        } catch (InterruptedException ignore) {
         } finally {
             System.out.println(flag + " - finished");
         }

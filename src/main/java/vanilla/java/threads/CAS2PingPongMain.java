@@ -8,15 +8,18 @@ import java.util.concurrent.atomic.AtomicLong;
 /**
  * Created by peter.lawrey on 12/01/2016.
  */
-public class CASPingPongMain {
+public class CAS2PingPongMain {
     final AtomicBoolean toggle = new AtomicBoolean();
-    final AtomicLong count = new AtomicLong();
+    final AtomicLong count1 = new AtomicLong();
+    final AtomicLong count2 = new AtomicLong();
+    byte[] bytes1 = new byte[64];
+    byte[] bytes2 = new byte[64];
 
     public static void main(String... args) throws InterruptedException {
-        CASPingPongMain ppm = new CASPingPongMain();
+        CAS2PingPongMain ppm = new CAS2PingPongMain();
 
-        Thread t1 = ppm.createThread(true);
-        Thread t2 = ppm.createThread(false);
+        Thread t1 = ppm.createThread(true, ppm.count1);
+        Thread t2 = ppm.createThread(false, ppm.count2);
         long start = System.currentTimeMillis();
         Thread.sleep(5000);
         t1.interrupt();
@@ -24,17 +27,18 @@ public class CASPingPongMain {
         long time = System.currentTimeMillis() - start;
         t1.join();
         t2.join();
-        System.out.printf("Counted to %,d toggles per second.%n", ppm.count.get() * 1000 / time);
+        System.out.printf("Counted to %,d toggles per second.%n",
+                (ppm.count1.get() + ppm.count2.get()) * 1000 / time);
     }
 
     @NotNull
-    Thread createThread(boolean flag) {
-        Thread thread = new Thread(() -> runLoop(flag), "toggle-" + flag);
+    Thread createThread(boolean flag, AtomicLong count) {
+        Thread thread = new Thread(() -> runLoop(flag, count), "toggle-" + flag);
         thread.start();
         return thread;
     }
 
-    void runLoop(boolean flag) {
+    void runLoop(boolean flag, AtomicLong count) {
         while (!Thread.currentThread().isInterrupted()) {
             if (toggle.compareAndSet(!flag, flag)) {
 //                count.getAndUpdate(l -> (l + 1) % 24);

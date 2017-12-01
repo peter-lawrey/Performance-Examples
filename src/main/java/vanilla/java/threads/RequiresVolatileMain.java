@@ -1,7 +1,7 @@
 package vanilla.java.threads;
 
 public class RequiresVolatileMain {
-    static boolean value;
+    static volatile boolean value;
 
     public static void main(String... args) {
         new Thread(new MyRunnable(true), "Sets true").start();

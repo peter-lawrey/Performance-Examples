@@ -13,8 +13,12 @@ public class IteratorMain {
         strings.add("A");
         strings.add("B");
         strings.add("C");
+        strings.add("D");
         for (Iterator<String> iterator = strings.iterator(); iterator.hasNext(); ) {
             String string = iterator.next();
+//            System.out.println(string);
+//            if (string.equals("C"))
+//                strings.remove(string);
             iterator.remove();
         }
     }
